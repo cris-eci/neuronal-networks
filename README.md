@@ -1,4 +1,5 @@
-# CNN Architecture Assignment — CIFAR-10 Image Classification
+# Neural Networks
+## CNN Architecture Assignment — CIFAR-10 Image Classification
 
 > Convolutional Neural Network design, experimentation, and interpretation on CIFAR-10.
 
@@ -677,7 +678,7 @@ pandas>=1.5.0
 
 ---
 
-## 👤 Author
+## 👤 Author - Cristian Santiago Pedraza Rodriguez
 
-Neural Networks & Deep Learning Course — 2026-I  
+Machine Learning Bootcamp — Digital Transformation and Enterprise Architecture
 Escuela Colombiana de Ingeniería Julio Garavito
