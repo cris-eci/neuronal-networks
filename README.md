@@ -594,7 +594,7 @@ Projecting the 512-dimensional dense layer activations into 2D space using t-SNE
 
 1. Clone this repository:
 ```bash
-git clone <repository-url>
+git clone https://github.com/cris-eci/neuronal-networks.git
 cd neuronal-networks
 ```
 
