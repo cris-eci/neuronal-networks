@@ -1,3 +1,9 @@
 class-notebooks/utilities
 /__pycache__
 IMAGE_CAPTURE_GUIDE.md
+neuronal-networks.code-workspace
+
+# SageMaker deployment artifacts
+model.tar.gz
+cifar10_cnn_model/
+screenshots/
