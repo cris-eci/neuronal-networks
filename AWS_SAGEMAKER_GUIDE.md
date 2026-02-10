@@ -11,16 +11,14 @@ This guide walks you through deploying your trained CNN model to AWS SageMaker u
 
 1. [Prerequisites](#prerequisites)
 2. [Learner Lab Limitations](#learner-lab-limitations)
-3. [Step 1: Export the Model from the Notebook](#step-1-export-the-model-from-the-notebook)
-4. [Step 2: Start AWS Learner Lab](#step-2-start-aws-learner-lab)
-5. [Step 3: Create SageMaker Domain](#step-3-create-sagemaker-domain)
-6. [Step 4: Create User Profile](#step-4-create-user-profile)
-7. [Step 5: Create Code Editor Space](#step-5-create-code-editor-space)
-8. [Step 6: Upload Project Files](#step-6-upload-project-files)
-9. [Step 7: Run Deployment Demo](#step-7-run-deployment-demo)
-10. [Step 8: Capture Screenshots](#step-8-capture-screenshots)
-11. [Changing VPC to Public](#changing-vpc-to-public)
-12. [Troubleshooting](#troubleshooting)
+3. [Step 2: Start AWS Learner Lab](#step-2-start-aws-learner-lab)
+4. [Step 3: Create SageMaker Domain](#step-3-create-sagemaker-domain)
+5. [Step 4: Create User Profile](#step-4-create-user-profile)
+6. [Step 5: Create Code Editor Space](#step-5-create-code-editor-space)
+7. [Step 6: Upload Project Files](#step-6-upload-project-files)
+8. [Step 7: Run Deployment Demo](#step-7-run-deployment-demo)
+10. [Changing VPC to Public](#changing-vpc-to-public)
+11. [Troubleshooting](#troubleshooting)
 
 ---
 
@@ -68,52 +66,7 @@ neuronal-networks/
 
 ---
 
-## Step 1: Export the Model from the Notebook
-
-### 1.1 Run the Model Export Cells
-
-In your notebook (`cnn_assignment.ipynb`), go to **Task 6: Deployment in SageMaker** and run all the cells. This will:
-
-1. Save the trained CNN model in TensorFlow SavedModel format
-2. Package the model into `model.tar.gz`
-3. Verify the package contents
-
-### 1.2 Verify Model Files Exist
-
-In your terminal, check that all required files are present:
-
-```bash
-cd /path/to/neuronal-networks
-ls -la model.tar.gz
-ls -la cifar10_cnn_model/
-ls -la sagemaker_scripts/
-```
-
-### 1.3 Verify model.tar.gz Contents
-
-```bash
-tar -tzvf model.tar.gz
-```
-
-Expected output should include:
-```
-cifar10_cnn_model/saved_model.pb
-cifar10_cnn_model/variables/variables.data-00000-of-00001
-cifar10_cnn_model/variables/variables.index
-sagemaker_scripts/inference.py
-```
-
-### 1.4 Test Locally First (Optional)
-
-```bash
-python sagemaker_scripts/demo_deployment.py
-```
-
-This will run in local mode and verify your model works before uploading to AWS.
-
----
-
-## Step 2: Start AWS Learner Lab
+## Step 1: Step 2: Start AWS Learner Lab
 
 1. Go to your **AWS Academy** course in Canvas/LMS
 2. Click on **Modules** → **Learner Lab**
@@ -125,20 +78,20 @@ This will run in local mode and verify your model works before uploading to AWS.
 
 ---
 
-## Step 3: Create SageMaker Domain
+## Step 2: Create SageMaker Domain
 
-### 3.1 Navigate to SageMaker
+### 2.1 Navigate to SageMaker
 
 1. In the AWS Console search bar, type **SageMaker**
 2. Click **Amazon SageMaker**
 
-### 3.2 Create Domain
+### 2.2 Create Domain
 
 1. In the left sidebar, click **Admin configurations** → **Domains**
 2. Click **Create domain**
 3. Select **Set up for organizations** → Click **Set up**
 
-### 3.3 Configure Domain Details
+### 2.3 Configure Domain Details
 
 **Page 1 - Domain details:**
 - **Domain name:** `cifar10-cnn-domain` (or any name you prefer)
@@ -174,13 +127,13 @@ This will run in local mode and verify your model works before uploading to AWS.
 - Review your settings
 - Click **Submit**
 
-### 3.4 Wait for Domain Creation
+### 2.4 Wait for Domain Creation
 
 This takes 5-8 minutes. The status will show "Creating" → "InService".
 
 ---
 
-## Step 4: Create User Profile
+## Step 3: Create User Profile
 
 Once the domain is ready (status: **InService**):
 
@@ -199,14 +152,14 @@ Wait 1-2 minutes for the user profile to be created.
 
 ---
 
-## Step 5: Create Code Editor Space
+## Step 4: Create Code Editor Space
 
-### 5.1 Open SageMaker Studio
+### 4.1 Open SageMaker Studio
 
 1. In your domain, find your user profile
 2. Click **Launch** → **Studio**
 
-### 5.2 Create Code Editor Space
+### 4.2 Create Code Editor Space
 
 1. In SageMaker Studio, look at the left sidebar
 2. Click **Applications** (or find "Code Editor" in the home page)
@@ -219,7 +172,7 @@ Wait 1-2 minutes for the user profile to be created.
 - **Storage:** Keep default (5 GB)
 - Click **Create space**
 
-### 5.3 Run the Space
+### 4.3 Run the Space
 
 1. After creation, click **Run space**
 2. Wait 2-3 minutes for the space to start
@@ -229,15 +182,15 @@ Wait 1-2 minutes for the user profile to be created.
 
 ---
 
-## Step 6: Upload Project Files
+## Step 5: Upload Project Files
 
-### 6.1 Open File Explorer
+### 5.1 Open File Explorer
 
 In Code Editor (VS Code in browser):
 1. Click the **Explorer** icon in the left sidebar
 2. You'll see an empty workspace
 
-### 6.2 Upload Files
+### 5.2 Upload Files
 
 **Option A: Drag and Drop**
 1. Open your local file manager
@@ -251,7 +204,7 @@ In Code Editor (VS Code in browser):
 1. Open Terminal: **Terminal** → **New Terminal**
 2. Use the upload feature in VS Code
 
-### 6.3 Verify Upload
+### 5.3 Verify Upload
 
 In the Code Editor terminal:
 
@@ -267,9 +220,9 @@ sagemaker_scripts/
 
 ---
 
-## Step 7: Run Deployment Demo
+## Step 6: Run Deployment Demo
 
-### 7.1 Install Dependencies
+### 6.1 Install Dependencies
 
 In the Code Editor terminal:
 
@@ -277,13 +230,13 @@ In the Code Editor terminal:
 pip install sagemaker boto3 tensorflow
 ```
 
-### 7.2 Run the Demo Script
+### 6.2 Run the Demo Script
 
 ```bash
 python sagemaker_scripts/demo_deployment.py
 ```
 
-### 7.3 Expected Output
+### 6.3 Expected Output
 
 ```
 ======================================================================
@@ -350,30 +303,6 @@ python sagemaker_scripts/demo_deployment.py
    │ Real endpoint deployment                 │   ❌   │
    └──────────────────────────────────────────┴────────┘
 ```
-
----
-
-## Step 8: Capture Screenshots
-
-For your submission, capture these screenshots:
-
-### Required Screenshots
-
-| Screenshot | What to Capture |
-|------------|-----------------|
-| 1. SageMaker Domain | Domain list showing your domain "InService" |
-| 2. Code Editor Space | Your running Code Editor space |
-| 3. Uploaded Files | File explorer showing `model.tar.gz` and scripts |
-| 4. Deployment Output | Terminal showing successful deployment demo |
-| 5. S3 Upload | S3 console showing uploaded model (optional) |
-
-### Save Screenshots
-
-Save to your project folder as:
-- `screenshots/01_sagemaker_domain.png`
-- `screenshots/02_code_editor_space.png`
-- `screenshots/03_uploaded_files.png`
-- `screenshots/04_deployment_output.png`
 
 ---
 
