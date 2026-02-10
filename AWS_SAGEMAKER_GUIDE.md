@@ -196,7 +196,6 @@ In Code Editor (VS Code in browser):
 1. Open your local file manager
 2. Select these files/folders:
    - `model.tar.gz`
-   - `cifar10_cnn_model/` folder (optional, for local testing)
    - `sagemaker_scripts/` folder
 3. Drag them into the Code Editor file explorer
 
@@ -222,13 +221,7 @@ sagemaker_scripts/
 
 ## Step 6: Run Deployment Demo
 
-### 6.1 Install Dependencies
-
-In the Code Editor terminal:
-
-```bash
-pip install sagemaker boto3 tensorflow
-```
+### 6.1 Run the notebook
 
 ### 6.2 Run the Demo Script
 

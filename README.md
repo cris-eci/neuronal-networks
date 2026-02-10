@@ -620,8 +620,21 @@ The trained CNN model is prepared for cloud deployment using **AWS SageMaker**, 
 ### Quick Start
 
 1. **Export the model** by running Task 6 cells in the notebook
-2. **Test locally**: `python sagemaker_scripts/demo_deployment.py`
-3. **Deploy to AWS**: Follow the instructions in `AWS_SAGEMAKER_GUIDE.md`
+## AWS Deployment
+
+This section guides you through deploying your neural network models to AWS using SageMaker. For detailed step-by-step instructions, configuration options, and best practices, refer to the [AWS SageMaker Guide](./AWS_SAGEMAKER_GUIDE.md).
+
+### Key Steps:
+- Set up your AWS environment
+![Setting up sagemaker environment](images/sm-set-up-env.png)
+- Prepare your model artifacts
+![uploaded files](images/sm-upload-files.png)
+- Configure SageMaker endpoints
+![deployment](images/sm-deployment.png)
+
+- Deploy and monitor your model in production
+2. **Deploy to AWS**: Follow the instructions in `AWS_SAGEMAKER_GUIDE.md` 
+
 
 ### Sample Inference Response
 
